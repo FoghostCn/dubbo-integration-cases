@@ -1,0 +1,11 @@
+[
+    {
+        "name": "org.apache.dubbo.rpc.protocol.rest.RpcExceptionMapper",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            }
+        ]
+    }
+]

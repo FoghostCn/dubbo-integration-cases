@@ -20,19 +20,38 @@ package org.apache.dubbo.rest.withtoken.consumer.test;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.samples.rest.withtoken.api.DemoService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class ConsumerTest {
     @DubboReference
     private DemoService demoService;
+
     @Test
     public void test01(){
-        String hello = demoService.hello("1111");
-        System.out.println(hello);
+        try {
+            String hello = demoService.hello("1111");
+            System.out.println(hello);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+//    @Test
+//    public void http() {
+//        OkHttpClient CLIENT = new OkHttpClient().
+//                newBuilder().readTimeout(60, TimeUnit.SECONDS).build();
+//        Request.Builder builder = new Request.Builder();
+//        // 添加header
+//        builder.addHeader(RestHeaderEnum.TOKEN_KEY.getHeader(), "122");
+//        Request request = builder.url("http://127.0.0.1:8087").build();
+//        try (Response response = CLIENT.newCall(request).execute()) {
+//            if (!response.isSuccessful()) {
+//                throw new RuntimeException("Unexpected code " + response);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

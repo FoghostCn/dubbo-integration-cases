@@ -16,9 +16,22 @@
 dubbo:
   application:
     name: dubbo-springboot-rest-consumer
+    logger: slf4j
+    compiler: jdk
+    qos-enable: false
   protocol:
     name: rest
+    serialization: fastjson2
     port: -1
   registry:
     id: zk-registry
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+  provider:
+      proxy: jdk
+      serialization: fastjson2
+  consumer:
+      proxy: jdk
+      serialization: fastjson2
+logging:
+    level:
+        root: info
